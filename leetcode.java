@@ -17,9 +17,17 @@ public class leetcode {
         
         return max;
     }
-        public static void main(String[] args) {
-        int arr[] = {1,3,8,48,10,2,8,48,128};
-        System.out.println(longestNiceSubarray(arr));
+    
+    
+    
+    
+    
+    
+    
+    
+    public static void main(String[] args) {
+    int arr[] = {1,3,8,48,10,2,8,48,128};
+    System.out.println(longestNiceSubarray(arr));
         
     }
 }
