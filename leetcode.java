@@ -41,9 +41,7 @@ public class leetcode {
         return -1;
     }
 
-    
-    
-    
+        
     
     
     
@@ -55,6 +53,6 @@ public class leetcode {
 
     // int arr[] = {0,1,1,1,0,0};
     // System.out.println(minOperation(arr));
-        
+    
     }
 }
