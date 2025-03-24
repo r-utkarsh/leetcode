@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class leetcode {
     public static int longestNiceSubarray(int arr[]){
@@ -41,7 +42,19 @@ public class leetcode {
         return -1;
     }
 
+    public static int countDays(int days, int[][] meetings) {
+        Arrays.sort(meetings, (a, b) -> Integer.compare(a[0], b[0]));
+        int prevEnd = 0, res = 0;
+        for (int[] meeting : meetings) {
+            if (meeting[0] > prevEnd) {
+                res += meeting[0] - prevEnd - 1;
+            }
+            prevEnd = Math.max(prevEnd, meeting[1]);
+        }
+        if(prevEnd < days) res += days-prevEnd; 
         
+        return res;
+    }    
     
     
     
@@ -54,5 +67,9 @@ public class leetcode {
     // int arr[] = {0,1,1,1,0,0};
     // System.out.println(minOperation(arr));
     
+    // int meeting[][] = {{5,7},{1,3},{9,10}};
+    // int days = 10;
+    // System.out.println(countDays(days, meeting));
+
     }
 }
