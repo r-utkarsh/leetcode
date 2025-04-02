@@ -56,9 +56,18 @@ public class leetcode {
         return res;
     }    
     
-    
-    
-    
+    public static long maximumTripletValue(int[] nums) {
+        long max = 0;
+        for (int i = 0; i < nums.length-1; i++) { 
+            for (int j = i; j < nums.length; j++) {
+                int dif = nums[i] - nums[j];
+                for (int k = j+1; k < nums.length; k++) {
+                    max = Math.max(dif*nums[k], max);
+                }
+            }
+        }     
+        return max;
+    }
     
     public static void main(String[] args) {
     // int arr[] = {1,3,8,48,10,2,8,48,128};
@@ -70,6 +79,9 @@ public class leetcode {
     // int meeting[][] = {{5,7},{1,3},{9,10}};
     // int days = 10;
     // System.out.println(countDays(days, meeting));
-
+    
+    // int nums[] = {9,8,7,6,5,4,3,2,1};
+    // System.out.println(maximumTripletValue(nums));
+    
     }
 }
