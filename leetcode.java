@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class leetcode {
     public static int longestNiceSubarray(int arr[]){
@@ -69,6 +71,44 @@ public class leetcode {
         return max;
     }
     
+    public static long optimisedMaximumTripletValue(int nums[]){
+        long res = 0;
+        int maxDif = 0;
+        int maxInt = 0;
+        for(int num : nums){
+            res = Math.max(res, (long)maxDif*num);
+            maxDif = Math.max(maxDif, maxInt-num);
+            maxInt = Math.max(maxInt, num);
+        }
+        return res;
+    }
+    
+    public static List<List<Integer>> subset(int nums[]){
+        List<List<Integer>> lst = new ArrayList<>();
+        backTrackk(lst, new ArrayList<>(), nums, 0);
+        return lst;
+    }
+    public static void backTrackk(List<List<Integer>> lst, List<Integer> temp, int nums[], int start){
+        lst.add(new ArrayList<>(temp));
+        for (int i = start; i < nums.length; i++) {
+            temp.add(nums[i]);
+            backTrackk(lst, temp, nums, i+1);
+            temp.remove(temp.size()-1);
+        }
+    }
+    public static int subsetXORSum(int[] nums) {
+        List<List<Integer>> lst = subset(nums);
+        int sum = 0;
+        for (List<Integer> sa : lst) {
+            int x = 0;
+            for (int num : sa) {
+                x^= num;
+            }
+            sum+= x;    
+        }
+        return sum;
+    }
+    
     public static void main(String[] args) {
     // int arr[] = {1,3,8,48,10,2,8,48,128};
     // System.out.println(longestNiceSubarray(arr));
@@ -83,5 +123,11 @@ public class leetcode {
     // int nums[] = {9,8,7,6,5,4,3,2,1};
     // System.out.println(maximumTripletValue(nums));
     
+    // int nums[] = {1000000,1,1000000};
+    // System.out.println(optimisedMaximumTripletValue(nums));
+
+    // int nums[] = {5,1,6};
+    // System.out.println(subsetXORSum(nums));
+
     }
 }
