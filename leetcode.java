@@ -109,6 +109,43 @@ public class leetcode {
         return sum;
     }
     
+    public static int minimumOperations(int[] nums) {
+        ArrayList<Integer> lst = new ArrayList<>();
+        for (int i = nums.length-1; i >=0 ; i--) {
+            if(!lst.contains(nums[i])) lst.add(nums[i]);
+            else return (i+3)/3;
+        }
+        return 0;
+    }
+    
+    public static int minOperations(int[] nums, int k) {
+        ArrayList<Integer> lst = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i]<k) return -1;
+            else if(!lst.contains(nums[i]) && nums[i]>k) lst.add(nums[i]);
+        }
+        System.out.println(lst);
+        return lst.size();
+    }
+
+    public static int countGoodTriplets(int[] arr, int a, int b, int c) {
+        int cnt = 0 ;
+        int n = arr.length;
+        for (int i = 0; i < n-2; i++) {
+            for (int j = i+1; j < n-1; j++) {
+                if(Math.abs(arr[i]-arr[j])<=a){
+                    for (int k = j+1; k < n; k++) {
+                        if(Math.abs(arr[j]-arr[k]) <=b && Math.abs(arr[i]-arr[k]) <=c ) cnt++;
+                    }
+                }
+            }
+            
+        }
+        return cnt;
+    }
+
+    
+    
     public static void main(String[] args) {
     // int arr[] = {1,3,8,48,10,2,8,48,128};
     // System.out.println(longestNiceSubarray(arr));
@@ -129,5 +166,21 @@ public class leetcode {
     // int nums[] = {5,1,6};
     // System.out.println(subsetXORSum(nums));
 
+    // int nums[] = {1,2,3,4,2,3,3,5,7};
+    // int nums[] = {4,5,6,4,4};
+    // int nums[] = {1,2,3,4,5,6,7,8,9};
+    // System.out.println(minimumOperations(nums));
+    
+    // System.out.println(mul(2,3));
+
+    // int nums[] = {5,2,5,4,5};
+    // System.out.println(minOperations(nums, 2));
+
+    // int arr[] = {3,0,1,1,9,7};
+    // System.out.println(countGoodTriplets(arr, 7, 2, 3));
+    int brr[] = {1,1,2,2,3};
+    System.out.println(countGoodTriplets(brr, 0, 0, 1));
+
+    
     }
 }
