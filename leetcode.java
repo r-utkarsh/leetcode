@@ -144,7 +144,32 @@ public class leetcode {
         return cnt;
     }
 
-    
+    public static int countSymmetricIntegers(int low, int high) {
+        int cnt  = 0;
+        for (int i = low; i < high+1; i++) {
+            String num = Integer.toString(i);
+            int len = num.length();
+            if(num.length()%2 == 0 ) {
+
+                int lh=0;
+                int rh = 0;
+                
+                for (int j = 0; j < len/2; j++) { 
+                    int digit = num.charAt(j) - '0';
+                    lh += digit;
+                }
+                for (int j = len/2; j < len; j++) { 
+                    int digit = num.charAt(j) - '0';
+                    rh += digit;
+                }
+                if(lh == rh){
+                    System.out.println(i);
+                    cnt++;
+                } 
+            }
+        }
+        return cnt;
+    }
     
     public static void main(String[] args) {
     // int arr[] = {1,3,8,48,10,2,8,48,128};
@@ -178,9 +203,10 @@ public class leetcode {
 
     // int arr[] = {3,0,1,1,9,7};
     // System.out.println(countGoodTriplets(arr, 7, 2, 3));
-    int brr[] = {1,1,2,2,3};
-    System.out.println(countGoodTriplets(brr, 0, 0, 1));
+    // int brr[] = {1,1,2,2,3};
+    // System.out.println(countGoodTriplets(brr, 0, 0, 1));
 
-    
+    // System.out.println(countSymmetricIntegers(1, 100));
+    System.out.println(countSymmetricIntegers(100, 1782));
     }
 }
